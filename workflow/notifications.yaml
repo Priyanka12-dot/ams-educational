@@ -1,0 +1,7 @@
+name: notifications
+description: Events that may notify organization members.
+subscriptions:
+  - event: JournalEntryPosted
+    audience: tenant-auditors
+  - event: PeriodClosed
+    audience: tenant-administrators

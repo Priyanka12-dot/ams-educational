@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ams-staging
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ams-backend
+  namespace: ams-staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ams-backend
+  template:
+    metadata:
+      labels:
+        app: ams-backend
+    spec:
+      imagePullSecrets:
+        - name: ghcr-pull
+      containers:
+        - name: backend
+          image: ghcr.io/example/ams-educational-backend:main
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - secretRef:
+                name: ams-staging-secrets
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: HOST
+              value: 0.0.0.0
+            - name: PORT
+              value: "3000"
+            - name: COOKIE_SECURE
+              value: "true"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: ams-staging
+spec:
+  selector:
+    app: ams-backend
+  ports:
+    - port: 3000
+      targetPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ams-frontend
+  namespace: ams-staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ams-frontend
+  template:
+    metadata:
+      labels:
+        app: ams-frontend
+    spec:
+      imagePullSecrets:
+        - name: ghcr-pull
+      containers:
+        - name: frontend
+          image: ghcr.io/example/ams-educational-frontend:main
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: ams-staging
+spec:
+  selector:
+    app: ams-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP

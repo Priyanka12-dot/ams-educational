@@ -1,0 +1,8 @@
+name: period-close
+description: Guided month-end close checklist.
+trigger: user.starts_period_close
+steps:
+  - verify: trial-balance-balanced
+  - review: unposted-drafts
+  - approve: role=ADMIN
+  - close: record-close-event

@@ -1,0 +1,12 @@
+FROM node:22-alpine AS build
+WORKDIR /app
+RUN corepack enable
+COPY package.json pnpm-workspace.yaml tsconfig.base.json ./
+COPY packages/shared/package.json packages/shared/package.json
+COPY apps/backend/package.json apps/backend/package.json
+RUN pnpm install --no-frozen-lockfile
+COPY packages/shared packages/shared
+COPY apps/backend apps/backend
+RUN pnpm --filter @ams/shared build && pnpm --filter @ams/backend build
+EXPOSE 3000
+CMD ["sh","-c","pnpm --filter @ams/backend db:migrate && pnpm --filter @ams/backend start"]

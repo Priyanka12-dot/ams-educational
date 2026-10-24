@@ -1,0 +1,3 @@
+# Contributing
+
+Use Node.js 22 and pnpm 9. Run `pnpm install`, copy `.env.example` to `.env`, and start Postgres using `docker compose up -d db`. Use short branches and conventional commits (`feat:`, `fix:`, `docs:`, `test:`). Domain changes should include tests and public domain functions need doc comments. Never commit credentials or edit posted financial history; use a reversal instead. Pull requests should explain the accounting rule affected and how it was verified.

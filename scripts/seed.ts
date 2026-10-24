@@ -1,0 +1,1 @@
+import '../apps/backend/src/seed.js';

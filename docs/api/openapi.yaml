@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: AMS Educational API
+  version: 0.1.0
+servers:
+  - url: http://localhost:3000/api/v1
+paths:
+  /auth/register:
+    post:
+      summary: Create an organization and its first administrator
+      responses:
+        '201': { description: Registered; access token set as cookie }
+        '400': { description: Invalid request }
+  /auth/login:
+    post:
+      summary: Sign in
+      responses:
+        '200': { description: Signed in; access and refresh cookies set }
+        '401': { description: Invalid credentials }
+  /auth/refresh:
+    post:
+      summary: Rotate refresh token
+      responses:
+        '200': { description: Session refreshed }
+        '401': { description: Session expired }
+  /auth/session:
+    get:
+      summary: Return the authenticated user's session
+      responses:
+        '200': { description: Current user and tenant }
+        '401': { description: Session is not authenticated }
+  /auth/logout:
+    post:
+      summary: Revoke current refresh token
+      responses:
+        '204': { description: Signed out }
+  /accounts:
+    get:
+      summary: List tenant accounts
+      responses:
+        '200': { description: Account list }
+    post:
+      summary: Create an account
+      responses:
+        '201': { description: Account created }
+  /journal-entries:
+    get:
+      summary: List tenant journal entries
+      responses:
+        '200': { description: Journal entries }
+    post:
+      summary: Post a balanced journal
+      responses:
+        '201': { description: Entry posted }
+  /reports/trial-balance:
+    get:
+      summary: Get tenant trial balance
+      responses:
+        '200': { description: Debit and credit totals }

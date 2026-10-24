@@ -1,0 +1,8 @@
+name: journal-entry-approval
+description: Optional review process for material entries.
+trigger: journal_entry.submitted
+steps:
+  - validate: balanced-postings
+  - approve: role=ACCOUNTANT
+  - post: append-only
+  - notify: journal-entry-posted
