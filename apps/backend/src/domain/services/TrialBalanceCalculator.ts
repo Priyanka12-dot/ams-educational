@@ -27,10 +27,13 @@ export class TrialBalanceCalculator {
         lines[0]?.amount.currency ?? postings[0]?.amount.currency ?? "USD";
       let debit = 0n;
       let credit = 0n;
-      for (const line of lines)
-        line.direction === "DEBIT"
-          ? (debit += line.amount.minorUnits())
-          : (credit += line.amount.minorUnits());
+      for (const line of lines) {
+        if (line.direction === "DEBIT") {
+          debit += line.amount.minorUnits();
+        } else {
+          credit += line.amount.minorUnits();
+        }
+      }
       const debitNormal =
         account.type === "ASSET" || account.type === "EXPENSE";
       return {
@@ -45,3 +48,4 @@ export class TrialBalanceCalculator {
     });
   }
 }
+

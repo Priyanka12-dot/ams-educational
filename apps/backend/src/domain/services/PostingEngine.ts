@@ -21,10 +21,14 @@ export class PostingEngine {
       throw new UnbalancedEntryError();
     let debits = 0n;
     let credits = 0n;
-    for (const line of lines)
-      line.direction === "DEBIT"
-        ? (debits += line.amount.minorUnits())
-        : (credits += line.amount.minorUnits());
+    for (const line of lines) {
+      if (line.direction === "DEBIT") {
+        debits += line.amount.minorUnits();
+      } else {
+        credits += line.amount.minorUnits();
+      }
+    }
     if (debits !== credits) throw new UnbalancedEntryError();
   }
 }
+
