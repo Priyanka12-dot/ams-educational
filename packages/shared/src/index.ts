@@ -20,7 +20,7 @@ export const createAccountSchema = z
 export const postingInputSchema = z
   .object({
     accountId: z.string().uuid(),
-    amount: z.string().regex(/^\d{1,15}(\.\d{1,4})?$/),
+    amount: z.string().regex(/^(?=.*[1-9])\d{1,15}(\.\d{1,4})?$/),
     direction: directionSchema,
   })
   .strict();
@@ -43,3 +43,4 @@ export type AccountType = z.infer<typeof accountTypeSchema>;
 export type Direction = z.infer<typeof directionSchema>;
 export type CreateAccountInput = z.infer<typeof createAccountSchema>;
 export type CreateJournalEntryInput = z.infer<typeof createJournalEntrySchema>;
+

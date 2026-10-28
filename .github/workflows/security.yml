@@ -5,6 +5,10 @@ on:
     branches: [main]
   schedule:
     - cron: '17 4 * * 1'
+permissions:
+  contents: read
+  pull-requests: read
+  security-events: write
 jobs:
   scans:
     runs-on: ubuntu-latest
@@ -17,8 +21,11 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm audit --audit-level high
       - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: github/codeql-action/init@v3
         with: { languages: javascript-typescript }
       - uses: github/codeql-action/analyze@v3
       - name: License inventory
         run: npx --yes license-checker --production --summary
+
