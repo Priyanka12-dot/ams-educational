@@ -13,12 +13,12 @@
     "@ams/shared": "workspace:*",
     "@tanstack/react-query": "5.62.11",
     "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react-dom": "19.3.1",
     "zustand": "5.0.2"
   },
   "devDependencies": {
     "@types/react": "19.0.3",
-    "@types/react-dom": "19.0.2",
+    "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "4.3.4",
     "typescript": "5.7.2",
     "vite": "6.4.4",
