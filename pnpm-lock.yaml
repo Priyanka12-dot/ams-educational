@@ -36,8 +36,8 @@ importers:
         specifier: 10.0.1
         version: 10.0.1
       '@fastify/cors':
-        specifier: 10.0.2
-        version: 10.0.2
+        specifier: 11.3.1
+        version: 11.3.1
       '@fastify/helmet':
         specifier: 13.1.2
         version: 13.1.2
@@ -854,8 +854,8 @@ packages:
   '@fastify/cookie@10.0.1':
     resolution: {integrity: sha512-NV/wbCUv4ETJ5KM1KMu0fLx0nSCm9idIxwg66NZnNbfPQH3rdbx6k0qRs5uy0y+MhBgvDudYRA30KlK659chyw==}
 
-  '@fastify/cors@10.0.2':
-    resolution: {integrity: sha512-DGdxOG36sS/tZv1NFiCJGi7wGuXOSPL2CmNX5PbOVKx0C6LuIALRMrqLByHTCcX1Rbl8NJ9IWlJex32bzydvlw==}
+  '@fastify/cors@11.3.1':
+    resolution: {integrity: sha512-gZXNzd6FLHzOIfvoK4+Az3Wko2V6Y0MIsLxpyo4AEYl7a9q1JBPwPaxLea4nkr++8FCiJiPpYYo6E02uZW0dqw==}
 
   '@fastify/deepmerge@3.2.2':
     resolution: {integrity: sha512-155eqA/WMQdN6gUD4RrhS2K0Pcz2Ou9pQ86L0sipOpP9ONbTA6oYw/hW4VdBjR4egcDHqmWUK9x80oUX7S1mDQ==}
@@ -1816,9 +1816,6 @@ packages:
   minimatch@3.1.5:
     resolution: {integrity: sha512-VgjWUsnnT6n+NUk6eZq77zeFdpW2LWDzP6zFGrCbHXiYNul5Dzqk2HHQ5uFH2DNW5Xbp8+jVzaeNt94ssEEl4w==}
 
-  mnemonist@0.39.8:
-    resolution: {integrity: sha512-vyWo2K3fjrUw8YeeZ1zF0fy6Mu59RHokURlld8ymdUPjMlD9EC9ov1/YPqTgqRvUN9nTr3Gqfz29LYAmu0PHPQ==}
-
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
@@ -1860,9 +1857,6 @@ packages:
   object-hash@3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
-
-  obliterator@2.0.5:
-    resolution: {integrity: sha512-42CPE9AhahZRsMNslczq0ctAEtqk8Eka26QofnqC346BZdHDySk3LWka23LI7ULIw11NmltpiLagIq8gBozxTw==}
 
   obug@3.0.0:
     resolution: {integrity: sha512-5vvB5+W7ePv+p3uqxi+RcW1XAzLW0/hxt3/4X4Lc4qHudzOhmBiBwOY6DRob4WnanAEGvNcLjF+KNOufrUoEQw==}
@@ -2884,10 +2878,10 @@ snapshots:
       cookie-signature: 1.2.2
       fastify-plugin: 5.1.0
 
-  '@fastify/cors@10.0.2':
+  '@fastify/cors@11.3.1':
     dependencies:
-      fastify-plugin: 5.1.0
-      mnemonist: 0.39.8
+      fastify-plugin: 6.0.1
+      toad-cache: 3.7.4
 
   '@fastify/deepmerge@3.2.2': {}
 
@@ -3820,10 +3814,6 @@ snapshots:
     dependencies:
       brace-expansion: 1.1.21
 
-  mnemonist@0.39.8:
-    dependencies:
-      obliterator: 2.0.5
-
   ms@2.1.3: {}
 
   mz@2.7.0:
@@ -3849,8 +3839,6 @@ snapshots:
   object-assign@4.1.1: {}
 
   object-hash@3.0.0: {}
-
-  obliterator@2.0.5: {}
 
   obug@3.0.0: {}
 
@@ -4317,4 +4305,3 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.0.3
       react: 19.0.0
-
